@@ -1,0 +1,45 @@
+.info {
+  width: 100%;
+  height: 694px;
+  padding-top: 65px;
+  background: url("/pattern-curved-line-left.svg") top 13px right 167px
+    no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 1160px;
+  height: 533px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.image {
+  width: 564px;
+  height: 533px;
+}
+
+.text {
+  width: 485px;
+  height: 309px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 600;
+  color: #253347;
+  line-height: 110%;
+  letter-spacing: -5%;
+}
+
+.description {
+  font-weight: 400;
+  color: #5e6e85;
+  line-height: 150%;
+}
