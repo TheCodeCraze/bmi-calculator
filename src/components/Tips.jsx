@@ -5,8 +5,8 @@ import Tip from "./Tip";
 const Tips = () => {
   return (
     <section className={styles.container}>
-      <div className={styles.tips}>
-        <div className={styles.content}>
+      <div className={styles.content}>
+        <div className={styles.tips}>
           {tips.map((tip) => (
             <Tip key={tip.id} {...tip} />
           ))}

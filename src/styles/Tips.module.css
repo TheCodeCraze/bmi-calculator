@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.tips {
+.content {
   width: 1392px;
   height: 100%;
   background: linear-gradient(
@@ -19,7 +19,7 @@
   border-radius: 35px;
 }
 
-.content {
+.tips {
   width: 1159px;
   height: 234px;
   display: flex;
