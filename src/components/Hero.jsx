@@ -1,4 +1,5 @@
 import styles from "../styles/Hero.module.css";
+import Calculator from "./Calculator";
 
 const Hero = () => {
   return (
@@ -14,24 +15,10 @@ const Hero = () => {
             to evaluate your overall health and well-being.
           </p>
         </div>
+        <Calculator />
       </div>
     </section>
   );
 };
 
 export default Hero;
-
-// Enter your details below
-
-// Metric
-// Imperial
-
-// Height
-// Weight
-
-// Your BMI is...
-
-// <!-- add score -->
-
-// Your BMI suggests you're <!-- add classification -->.
-// Your ideal weight is between <!-- add range -->.
