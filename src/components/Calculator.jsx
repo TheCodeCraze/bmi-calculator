@@ -65,7 +65,7 @@ const Calculator = () => {
     if (!bmi) return;
 
     calculateWeightStatus(+bmi);
-  }, [bmi, input.height]);
+  }, [bmi]);
 
   const resultClass = !bmi ? styles["result-empty"] : styles["result-bmi"];
 

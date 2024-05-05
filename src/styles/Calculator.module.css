@@ -141,7 +141,7 @@ input {
   display: flex;
   background: linear-gradient(to right, #345ff6, #587dff);
   color: #fff;
-  border-radius: 16px 999px 999px 16px;
+  border-radius: 100px 999px 999px 100px;
 }
 
 .result > .heading {
