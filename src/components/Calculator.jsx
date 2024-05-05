@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/Calculator.module.css";
+import Input from "./Input";
 
 const Calculator = () => {
   const [unit, setUnit] = useState({ metric: true, imperial: false });
@@ -105,35 +106,29 @@ const Calculator = () => {
           <label htmlFor="height" className={styles.label}>
             Height
           </label>
-          <div className={styles.value}>
-            <input
-              id="height"
-              type="text"
-              name="height"
-              placeholder="0"
-              className={styles.input}
-              value={input.height}
-              onChange={handleInput}
-            />
-            <p className={styles.unit}>cm</p>
-          </div>
+          <Input
+            id="height"
+            type="text"
+            name="height"
+            placeholder="0"
+            value={input.height}
+            handleInput={handleInput}
+            unit="cm"
+          />
         </div>
         <div className={styles.weight}>
           <label htmlFor="weight" className={styles.label}>
             Weight
           </label>
-          <div className={styles.value}>
-            <input
-              id="weight"
-              type="text"
-              name="weight"
-              placeholder="0"
-              className={styles.input}
-              value={input.weight}
-              onChange={handleInput}
-            />
-            <p className={styles.unit}>kg</p>
-          </div>
+          <Input
+            id="weight"
+            type="text"
+            name="weight"
+            placeholder="0"
+            value={input.weight}
+            handleInput={handleInput}
+            unit="kg"
+          />
         </div>
       </div>
       <div className={`${styles.result} ${resultClass}`}>
