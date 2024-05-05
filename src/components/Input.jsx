@@ -1,11 +1,10 @@
 import styles from "../styles/Input.module.css";
 import PropTypes from "prop-types";
 
-const Input = ({ id, type, name, placeholder, value, handleInput, unit }) => {
+const Input = ({ type, name, placeholder, value, handleInput, unit }) => {
   return (
     <div className={styles.group}>
       <input
-        id={id}
         type={type}
         name={name}
         placeholder={placeholder}
@@ -21,7 +20,6 @@ const Input = ({ id, type, name, placeholder, value, handleInput, unit }) => {
 export default Input;
 
 Input.propTypes = {
-  id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,

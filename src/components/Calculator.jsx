@@ -68,8 +68,6 @@ const Calculator = () => {
     calculateWeightStatus(+bmi);
   }, [bmi]);
 
-  const resultClass = !bmi ? styles["result-empty"] : styles["result-bmi"];
-
   return (
     <form className={styles.calculator}>
       <label className={styles.heading}>Enter your details below</label>
@@ -101,57 +99,96 @@ const Calculator = () => {
           </label>
         </div>
       </div>
-      <div className={styles.inputs}>
-        <div className={styles.height}>
-          <label htmlFor="height" className={styles.label}>
-            Height
-          </label>
-          <Input
-            id="height"
-            type="text"
-            name="height"
-            placeholder="0"
-            value={input.height}
-            handleInput={handleInput}
-            unit="cm"
-          />
+      {unit.metric ? (
+        <div className={styles["inputs-metric"]}>
+          <div className={styles.height}>
+            <label className={styles.label}>Height</label>
+            <Input
+              type="text"
+              name="height"
+              placeholder="0"
+              value={input.height}
+              handleInput={handleInput}
+              unit="cm"
+            />
+          </div>
+          <div className={styles.weight}>
+            <label className={styles.label}>Weight</label>
+            <Input
+              type="text"
+              name="weight"
+              placeholder="0"
+              value={input.weight}
+              handleInput={handleInput}
+              unit="kg"
+            />
+          </div>
         </div>
-        <div className={styles.weight}>
-          <label htmlFor="weight" className={styles.label}>
-            Weight
-          </label>
-          <Input
-            id="weight"
-            type="text"
-            name="weight"
-            placeholder="0"
-            value={input.weight}
-            handleInput={handleInput}
-            unit="kg"
-          />
-        </div>
-      </div>
-      <div className={`${styles.result} ${resultClass}`}>
-        {bmi ? (
-          <>
-            <div className={styles.bmi}>
-              <p className={styles.text}>Your BMI is...</p>
-              <h3 className={styles.value}>{bmi}</h3>
+      ) : (
+        <div className={styles["inputs-imperial"]}>
+          <div className={styles.height}>
+            <label className={styles.label}>Height</label>
+            <div className={styles.group}>
+              <Input
+                type="text"
+                name="feet"
+                placeholder="0"
+                value={input.height}
+                handleInput={handleInput}
+                unit="ft"
+              />
+              <Input
+                type="text"
+                name="inches"
+                placeholder="0"
+                value={input.height}
+                handleInput={handleInput}
+                unit="in"
+              />
             </div>
-            <p className={styles.description}>
-              Your BMI suggests you&apos;re {weightStatus}. Your ideal weight is
-              between <span>63.3kgs - 85.2kgs.</span>
-            </p>
-          </>
-        ) : (
-          <>
-            <h3 className={styles.heading}>Welcome!</h3>
-            <p className={styles.description}>
-              Enter your height and weight and you’ll see your BMI result here
-            </p>
-          </>
-        )}
-      </div>
+          </div>
+          <div className={styles.weight}>
+            <label className={styles.label}>Weight</label>
+            <div className={styles.group}>
+              <Input
+                type="text"
+                name="stone"
+                placeholder="0"
+                value={input.weight}
+                handleInput={handleInput}
+                unit="st"
+              />
+              <Input
+                type="text"
+                name="pounds"
+                placeholder="0"
+                value={input.weight}
+                handleInput={handleInput}
+                unit="lbs"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      {!bmi ? (
+        <div className={`${styles.result} ${styles["result-empty"]}`}>
+          <h3 className={styles.heading}>Welcome!</h3>
+          <p className={styles.description}>
+            Enter your height and weight and you’ll see your BMI result here
+          </p>
+        </div>
+      ) : (
+        <div className={`${styles.result} ${styles["result-bmi"]}`}>
+          <div className={styles.bmi}>
+            <p className={styles.text}>Your BMI is...</p>
+            <h3 className={styles.value}>{bmi}</h3>
+          </div>
+          <p className={styles.description}>
+            Your BMI suggests you&apos;re {weightStatus}. Your ideal weight is
+            between <span>63.3kgs - 85.2kgs.</span>
+          </p>
+        </div>
+      )}
     </form>
   );
 };
