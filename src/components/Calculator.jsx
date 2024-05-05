@@ -1,10 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import styles from "../styles/Calculator.module.css";
 import Input from "./Input";
+import {
+  calculateMetricBmi,
+  calculateImperialBmi,
+  calculateWeightStatus,
+} from "../utils/bmi";
+
+const INITIAL_STATE = {
+  metric: { cm: "", kg: "" },
+  imperial: { ft: "", in: "", st: "", lbs: "" },
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "METRIC_INPUT": {
+      const { name, value } = action.payload;
+      return { ...state, metric: { ...state.metric, [name]: value } };
+    }
+    case "IMPERIAL_INPUT": {
+      const { name, value } = action.payload;
+      return { ...state, imperial: { ...state.imperial, [name]: value } };
+    }
+    case "RESET_INPUT":
+      return {
+        metric: { cm: "", kg: "" },
+        imperial: { ft: "", in: "", st: "", lbs: "" },
+      };
+    default:
+      return state;
+  }
+};
 
 const Calculator = () => {
   const [unit, setUnit] = useState({ metric: true, imperial: false });
-  const [input, setInput] = useState({ height: "", weight: "" });
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const [bmi, setBmi] = useState(null);
   const [weightStatus, setWeightStatus] = useState("");
 
@@ -15,57 +45,36 @@ const Calculator = () => {
         ? { metric: !checked, imperial: checked }
         : { metric: checked, imperial: !checked }
     );
+    dispatch({ type: "RESET_INPUT" });
   };
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setInput((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const calculateBmi = (height, weight) => {
-    const heightInM = height / 100;
-    const result = weight / (heightInM * heightInM);
-    setBmi(result.toFixed(1));
-  };
-
-  const calculateWeightStatus = (bmi) => {
-    switch (true) {
-      case bmi < 18.5:
-        setWeightStatus("Underweight");
-        return;
-      case bmi > 18.5 && bmi < 24.9:
-        setWeightStatus("Healthy Weight");
-        return;
-      case bmi > 25.0 && bmi < 29.9:
-        setWeightStatus("Overweight");
-        return;
-      case bmi >= 30.0:
-        setWeightStatus("Obesity");
-        return;
-      default:
-        setWeightStatus("");
-        return;
-    }
+    unit.metric
+      ? dispatch({ type: "METRIC_INPUT", payload: { name, value } })
+      : dispatch({ type: "IMPERIAL_INPUT", payload: { name, value } });
   };
 
   useEffect(() => {
-    if (
-      !input.height ||
-      !input.weight ||
-      input.height.length < 2 ||
-      input.weight.length < 2
-    ) {
-      setBmi(null);
-      return;
-    }
+    const { metric, imperial } = state;
 
-    calculateBmi(+input.height, +input.weight);
-  }, [input.height, input.weight]);
+    if (unit.metric) {
+      const values = Object.values(metric);
+      const isValid = values.every(
+        (item) => item !== "" && item.length > 1 && item.length < 4
+      );
+      isValid ? setBmi(calculateMetricBmi(metric)) : setBmi(null);
+    } else {
+      const values = Object.values(imperial);
+      const isValid = values.every((item) => item !== "");
+      isValid ? setBmi(calculateImperialBmi(imperial)) : setBmi(null);
+    }
+  }, [unit, state]);
 
   useEffect(() => {
     if (!bmi) return;
 
-    calculateWeightStatus(+bmi);
+    calculateWeightStatus(+bmi, setWeightStatus);
   }, [bmi]);
 
   return (
@@ -105,9 +114,9 @@ const Calculator = () => {
             <label className={styles.label}>Height</label>
             <Input
               type="text"
-              name="height"
+              name="cm"
               placeholder="0"
-              value={input.height}
+              value={state.metric.cm}
               handleInput={handleInput}
               unit="cm"
             />
@@ -116,9 +125,9 @@ const Calculator = () => {
             <label className={styles.label}>Weight</label>
             <Input
               type="text"
-              name="weight"
+              name="kg"
               placeholder="0"
-              value={input.weight}
+              value={state.metric.kg}
               handleInput={handleInput}
               unit="kg"
             />
@@ -131,17 +140,17 @@ const Calculator = () => {
             <div className={styles.group}>
               <Input
                 type="text"
-                name="feet"
+                name="ft"
                 placeholder="0"
-                value={input.height}
+                value={state.imperial.ft}
                 handleInput={handleInput}
                 unit="ft"
               />
               <Input
                 type="text"
-                name="inches"
+                name="in"
                 placeholder="0"
-                value={input.height}
+                value={state.imperial.in}
                 handleInput={handleInput}
                 unit="in"
               />
@@ -152,17 +161,17 @@ const Calculator = () => {
             <div className={styles.group}>
               <Input
                 type="text"
-                name="stone"
+                name="st"
                 placeholder="0"
-                value={input.weight}
+                value={state.imperial.st}
                 handleInput={handleInput}
                 unit="st"
               />
               <Input
                 type="text"
-                name="pounds"
+                name="lbs"
                 placeholder="0"
-                value={input.weight}
+                value={state.imperial.lbs}
                 handleInput={handleInput}
                 unit="lbs"
               />
