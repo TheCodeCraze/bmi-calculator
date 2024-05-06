@@ -172,3 +172,18 @@ input {
   line-height: 110%;
   letter-spacing: -5%;
 }
+
+@media screen and (max-width: 1310px) {
+  .calculator {
+    right: -210px;
+  }
+}
+
+@media screen and (max-width: 1225px) {
+  .calculator {
+    right: auto;
+    top: 354px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
