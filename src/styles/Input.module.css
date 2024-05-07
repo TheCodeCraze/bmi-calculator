@@ -38,3 +38,9 @@
   top: 20px;
   right: 24px;
 }
+
+@media screen and (max-width: 1225px) {
+  .group {
+    width: 299px;
+  }
+}

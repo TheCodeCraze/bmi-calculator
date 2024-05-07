@@ -181,9 +181,25 @@ input {
 
 @media screen and (max-width: 1225px) {
   .calculator {
+    width: 686px;
     right: auto;
     top: 354px;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .metric,
+  .imperial {
+    width: 299px;
+    gap: 36px;
+  }
+
+  .result-bmi > .description,
+  .bmi {
+    width: 267px;
+  }
+
+  .value {
+    font-size: 48px;
   }
 }
