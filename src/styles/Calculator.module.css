@@ -7,7 +7,7 @@
   gap: 32px;
   position: absolute;
   top: 166px;
-  right: -298px;
+  left: 736px;
   border-radius: 16px;
   box-shadow: 16px 32px 56px 0 hsla(211, 40%, 69%, 0.25);
 }
@@ -175,17 +175,17 @@ input {
 
 @media screen and (max-width: 1310px) {
   .calculator {
-    right: -210px;
+    left: 636px;
   }
 }
 
 @media screen and (max-width: 1225px) {
   .calculator {
     width: 686px;
-    right: auto;
-    top: 354px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: static;
+    top: auto;
+    left: auto;
+    margin-top: -285px;
   }
 
   .metric,

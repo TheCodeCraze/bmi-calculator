@@ -4,7 +4,7 @@ import Calculator from "./Calculator";
 const Hero = () => {
   return (
     <section className={styles.hero}>
-      <div className={styles.content}>
+      <div className={styles["text-content"]}>
         <img src="/logo.svg" alt="Home" className={styles.logo} />
         <div className={styles.text}>
           <h1 className={styles.title}>Body Mass Index Calculator</h1>
@@ -15,8 +15,8 @@ const Hero = () => {
             to evaluate your overall health and well-being.
           </p>
         </div>
-        <Calculator />
       </div>
+      <Calculator />
     </section>
   );
 };
