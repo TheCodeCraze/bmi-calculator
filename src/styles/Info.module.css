@@ -71,10 +71,22 @@
     width: 331px;
     height: auto;
     margin-top: 35px;
+    margin-bottom: 0;
     gap: 32px;
   }
 
   .title {
     font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .info {
+    justify-content: flex-start;
+  }
+
+  .content {
+    position: relative;
+    left: -116px;
   }
 }
