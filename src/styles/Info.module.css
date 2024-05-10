@@ -90,3 +90,31 @@
     left: -116px;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .info {
+    height: 888px;
+    padding-top: 72px;
+    justify-content: center;
+    align-items: unset;
+  }
+
+  .content {
+    width: 375px;
+    height: 744.39px;
+    flex-direction: column;
+    gap: 48px;
+    position: static;
+  }
+
+  .image {
+    width: 100%;
+    height: 354.39px;
+  }
+
+  .text {
+    width: 328px;
+    height: 342px;
+    margin: 0 auto;
+  }
+}

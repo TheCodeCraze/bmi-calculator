@@ -63,3 +63,18 @@
     gap: 40px;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .container {
+    height: 879px;
+  }
+
+  .content {
+    padding: 0 28.96px 0 19.04px;
+  }
+
+  .tips {
+    width: 327px;
+    height: 767px;
+  }
+}
