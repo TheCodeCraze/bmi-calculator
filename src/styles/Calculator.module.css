@@ -6,7 +6,6 @@
   flex-direction: column;
   gap: 32px;
   position: absolute;
-  top: 166px;
   left: 736px;
   border-radius: 16px;
   box-shadow: 16px 32px 56px 0 hsla(211, 40%, 69%, 0.25);
@@ -21,7 +20,7 @@ input {
   font-weight: 600;
   color: #253347;
   line-height: auto;
-  letter-spacing: -5%;
+  letter-spacing: -1px;
 }
 
 .unit {

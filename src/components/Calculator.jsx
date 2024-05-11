@@ -78,7 +78,10 @@ const Calculator = () => {
   }, [bmi]);
 
   return (
-    <form className={styles.calculator}>
+    <form
+      className={styles.calculator}
+      style={{ top: bmi ? "166px" : "181px" }}
+    >
       <label className={styles.heading}>Enter your details below</label>
       <div className={styles.unit}>
         <div className={styles.metric}>
@@ -181,7 +184,7 @@ const Calculator = () => {
       )}
       {!bmi ? (
         <div className={`${styles.result} ${styles["result-empty"]}`}>
-          <h3 className={styles.heading}>Welcome!</h3>
+          <h2 className={styles.heading}>Welcome!</h2>
           <p className={styles.description}>
             Enter your height and weight and you’ll see your BMI result here
           </p>
