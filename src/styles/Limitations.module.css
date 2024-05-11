@@ -85,3 +85,27 @@
     gap: 24px 15px;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .limitations {
+    height: 1531px;
+    padding-top: 72px;
+    align-items: unset;
+  }
+
+  .content {
+    width: 327px;
+    height: 1363px;
+  }
+
+  .text {
+    height: 211px;
+  }
+
+  .cards {
+    height: 1096px;
+    grid-template-rows: 216px 168px 192px 240px 216px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -194,7 +194,12 @@ const Calculator = () => {
           </div>
           <p className={styles.description}>
             Your BMI suggests you&apos;re {weightStatus}. Your ideal weight is
-            between <span>63.3kgs - 85.2kgs.</span>
+            between{" "}
+            {unit.metric ? (
+              <span>63.3kgs - 85.2kgs.</span>
+            ) : (
+              <span>9st 6lbs - 12st 10lbs.</span>
+            )}
           </p>
         </div>
       )}

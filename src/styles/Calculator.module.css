@@ -203,3 +203,57 @@ input {
     font-size: 48px;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .calculator {
+    width: 450px;
+    margin-top: -170px;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .metric,
+  .imperial {
+    width: 128px;
+  }
+
+  .inputs-metric {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .height,
+  .weight {
+    width: 100%;
+  }
+
+  .inputs-imperial,
+  .inputs-imperial .group {
+    gap: 16px;
+  }
+
+  .result {
+    border-radius: 16px;
+  }
+
+  .result-bmi {
+    flex-direction: column;
+    align-items: unset;
+    gap: 24px;
+  }
+
+  .result-bmi > .description {
+    width: 100%;
+  }
+
+  .bmi {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .calculator {
+    width: 90%;
+  }
+}

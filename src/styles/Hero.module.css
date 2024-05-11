@@ -91,3 +91,19 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .text-content {
+    gap: 24px;
+  }
+
+  .text {
+    width: 327px;
+    height: 327px;
+    gap: 24px;
+  }
+
+  .title {
+    padding: 0;
+  }
+}
